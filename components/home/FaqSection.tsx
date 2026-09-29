@@ -1,0 +1,139 @@
+"use client";
+
+import { useState } from "react";
+import { Plus, Sparkles } from "lucide-react";
+
+import { Container } from "@/components/shared/Container";
+import { cn } from "@/lib/utils";
+import { faqs } from "@/data/faqs";
+
+export function FaqSection() {
+  const [openId, setOpenId] = useState<string | null>(faqs[0]?.id ?? null);
+
+  return (
+    <section className="relative overflow-hidden bg-[#fff8fa] py-20 sm:py-24 lg:py-28">
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-40 top-0 h-[420px] w-[420px] rounded-full bg-[#f2b3c7]/10 blur-[120px]" />
+        <div className="absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-[#f2b3c7]/10 blur-[120px]" />
+      </div>
+
+      <Container className="relative">
+        {/* Header */}
+        <div className="flex flex-col items-center text-center">
+          {/* Eyebrow */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#f2b3c7]/50 bg-white px-4 py-2 shadow-sm">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#f2b3c7]/30">
+              <Sparkles className="h-3.5 w-3.5 text-primary-900" />
+            </span>
+
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-900">
+              FAQ
+            </span>
+          </div>
+
+          {/* Heading */}
+          <h2 className="mt-6 max-w-4xl text-4xl font-bold leading-[1.02] tracking-[-0.045em] text-primary-950 sm:text-5xl lg:text-6xl xl:text-7xl">
+            Questions,
+            <span className="block text-primary-800">
+              answered clearly.
+            </span>
+          </h2>
+
+          {/* Description */}
+          <p className="mt-6 max-w-2xl text-base leading-7 text-primary-950/55 sm:text-lg">
+            Everything you need to know about booking, pricing, routes, and group
+            transportation.
+          </p>
+        </div>
+
+        {/* FAQ list */}
+        <div className="mt-12 grid gap-3 sm:mt-14">
+          {faqs.map((faq, index) => {
+            const isOpen = openId === faq.id;
+
+            return (
+              <div
+                key={faq.id}
+                className={cn(
+                  "group overflow-hidden rounded-[24px] border bg-white transition-all duration-300",
+                  isOpen
+                    ? "border-[#e8ccd5] shadow-[0_15px_45px_rgba(91,49,65,0.07)]"
+                    : "border-primary-200/60 shadow-[0_8px_30px_rgba(31,20,27,0.035)] hover:border-[#f2b3c7]/70"
+                )}
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenId(isOpen ? null : faq.id)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${faq.id}`}
+                  className="flex w-full items-center gap-4 px-5 py-5 text-left sm:px-7 sm:py-6"
+                >
+                  {/* Number */}
+                  <span
+                    className={cn(
+                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[11px] font-bold transition-all duration-300",
+                      isOpen
+                        ? "bg-[#f2b3c7] text-primary-950"
+                        : "bg-[#fff1f5] text-primary-800 group-hover:bg-[#f2b3c7]/40"
+                    )}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Question */}
+                  <span
+                    className={cn(
+                      "flex-1 pr-2 text-sm font-bold transition-colors duration-300 sm:text-base",
+                      isOpen ? "text-primary-900" : "text-primary-950"
+                    )}
+                  >
+                    {faq.question}
+                  </span>
+
+                  {/* Toggle */}
+                  <span
+                    className={cn(
+                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-300",
+                      isOpen
+                        ? "border-primary-900 bg-primary-900 text-white"
+                        : "border-primary-200 bg-[#fff8fa] text-primary-800 group-hover:border-[#f2b3c7]"
+                    )}
+                  >
+                    <Plus
+                      className={cn(
+                        "h-4 w-4 transition-transform duration-300",
+                        isOpen && "rotate-45"
+                      )}
+                    />
+                  </span>
+                </button>
+
+                {/* Answer */}
+                <div
+                  id={`faq-answer-${faq.id}`}
+                  className={cn(
+                    "grid transition-[grid-template-rows] duration-300 ease-out",
+                    isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                  )}
+                >
+                  <div className="overflow-hidden">
+                    <div className="border-t border-primary-950/8 px-5 pb-6 pt-5 sm:px-7 sm:pb-7">
+                      <div className="flex gap-4">
+                        <div className="hidden w-10 shrink-0 sm:block" />
+
+                        <p className="max-w-3xl text-sm leading-7 text-primary-950/55 sm:text-[15px]">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Container>
+    </section>
+  );
+}

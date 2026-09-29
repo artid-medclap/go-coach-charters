@@ -1,0 +1,48 @@
+import type { Tour } from "@/types/tour";
+
+export const tours: Tour[] = [
+  {
+    id: "t-1",
+    slug: "blue-ridge-mountain-escape",
+    title: "Blue Ridge Mountain Escape",
+    destination: "Asheville, North Carolina",
+    duration: "4 days",
+    price: 429,
+    rating: 4.8,
+    reviewsCount: 214,
+    highlights: ["Guided hikes", "Boutique hotel stay", "Local vineyard tasting"],
+  },
+  {
+    id: "t-2",
+    slug: "napa-valley-wine-trail",
+    title: "Napa Valley Wine Trail",
+    destination: "Napa Valley, California",
+    duration: "3 days",
+    price: 389,
+    rating: 4.7,
+    reviewsCount: 176,
+    highlights: ["3 vineyard tours", "Farm-to-table lunch", "Private coach transfers"],
+  },
+  {
+    id: "t-3",
+    slug: "historic-savannah-getaway",
+    title: "Historic Savannah Getaway",
+    destination: "Savannah, Georgia",
+    duration: "2 days",
+    price: 249,
+    rating: 4.6,
+    reviewsCount: 132,
+    highlights: ["Walking history tour", "Riverboat cruise", "Southern cooking class"],
+  },
+  {
+    id: "t-4",
+    slug: "sedona-red-rock-adventure",
+    title: "Sedona Red Rock Adventure",
+    destination: "Sedona, Arizona",
+    duration: "5 days",
+    price: 549,
+    rating: 4.9,
+    reviewsCount: 298,
+    highlights: ["Jeep canyon tour", "Sunset viewpoint stops", "Desert spa evening"],
+  },
+];

@@ -1,26 +1,253 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans:
+    var(--font-plus-jakarta), ui-sans-serif, system-ui, -apple-system,
+    sans-serif;
+
+  /* ========================================
+     PRIMARY — GO COACH BURGUNDY
+     ======================================== */
+
+  --color-primary-50: #fdf0f4;
+  --color-primary-100: #f9d9e3;
+  --color-primary-200: #f2b3c7;
+  --color-primary-300: #e887a5;
+  --color-primary-400: #d9577d;
+  --color-primary-500: #c2184a;
+  --color-primary-600: #9e0038;
+  --color-primary-700: #85002f;
+  --color-primary-800: #730028;
+  --color-primary-900: #580021;
+  --color-primary-950: #350014;
+
+  /* ========================================
+     SECONDARY — WHITE
+     ======================================== */
+
+  --color-secondary-50: #ffffff;
+  --color-secondary-100: #ffffff;
+  --color-secondary-200: #ffffff;
+  --color-secondary-300: #ffffff;
+  --color-secondary-400: #ffffff;
+  --color-secondary-500: #ffffff;
+  --color-secondary-600: #ffffff;
+  --color-secondary-700: #ffffff;
+  --color-secondary-800: #ffffff;
+  --color-secondary-900: #ffffff;
+  --color-secondary-950: #ffffff;
+
+  /* ========================================
+     ACCENT — LIGHT BURGUNDY
+     ======================================== */
+
+  --color-accent-50: #fff6f8;
+  --color-accent-100: #ffe9ef;
+  --color-accent-200: #ffd1de;
+  --color-accent-300: #ffb2c7;
+  --color-accent-400: #f783a4;
+  --color-accent-500: #e85b83;
+  --color-accent-600: #c2184a;
+  --color-accent-700: #9e0038;
+  --color-accent-800: #730028;
+  --color-accent-900: #580021;
+
+  /* ========================================
+     RADIUS
+     ======================================== */
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+
+  /* ========================================
+     SHADOWS
+     ======================================== */
+
+  --shadow-card: 0 8px 24px -12px rgb(158 0 56 / 0.15);
+  --shadow-soft: 0 24px 48px -20px rgb(158 0 56 / 0.2);
+}
+
 :root {
+  /* ========================================
+     BASE
+     ======================================== */
+
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #242424;
+
+  --surface: #ffffff;
+  --surface-muted: #f8f5f6;
+
+  --border: #eadde2;
+  --muted-foreground: #6b6266;
+
+  /* ========================================
+     BRAND
+     ======================================== */
+
+  --brand-primary: #9e0038;
+  --brand-primary-dark: #730028;
+  --brand-secondary: #ffffff;
+  --brand-accent: #c2184a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #242424;
+
+    --surface: #ffffff;
+    --surface-muted: #f8f5f6;
+
+    --border: #eadde2;
+    --muted-foreground: #6b6266;
+
+    --brand-primary: #9e0038;
+    --brand-primary-dark: #730028;
+    --brand-secondary: #ffffff;
+    --brand-accent: #c2184a;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+
+  --color-border: var(--border);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-dark: var(--brand-primary-dark);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+@keyframes trust-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-trust-marquee {
+  animation: trust-marquee 35s linear infinite;
+  will-change: transform;
+}
+
+@keyframes gallery-marquee-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes gallery-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-gallery-left {
+  animation: gallery-marquee-left 42s linear infinite;
+  will-change: transform;
+}
+
+.animate-gallery-right {
+  animation: gallery-marquee-right 48s linear infinite;
+  will-change: transform;
+}
+
+.animate-gallery-left:hover,
+.animate-gallery-right:hover,
+.gallery-marquee-container:hover .animate-gallery-left,
+.gallery-marquee-container:hover .animate-gallery-right {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-trust-marquee,
+  .animate-gallery-left,
+  .animate-gallery-right {
+    animation-play-state: paused;
+  }
+}
+
+/* =========================================================
+   3D FLIP CARD UTILITIES
+========================================================= */
+.flip-card {
+  perspective: 1800px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-within .flip-card-inner {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 30px;
+}
+
+.flip-card-front {
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
