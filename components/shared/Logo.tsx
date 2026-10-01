@@ -10,7 +10,7 @@ interface LogoProps {
 export function Logo({ className, inverted = false }: LogoProps) {
   return (
     <Link
-      href="/"
+      href="/#top"
       className={cn(
         "flex items-center gap-3 text-lg font-bold tracking-tight",
         inverted ? "text-white" : "text-foreground"

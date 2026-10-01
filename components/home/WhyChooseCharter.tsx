@@ -1,353 +1,218 @@
+import Image from "next/image";
 import {
-  ArrowRight,
-  ArrowUpRight,
-  BadgeCheck,
-  Clock3,
-  Headphones,
+  BusFront,
+  CheckCircle2,
+  Luggage,
   MapPinned,
-  ShieldCheck,
-  Wallet,
+  UserCheck,
+  UsersRound,
 } from "lucide-react";
 
 import { Container } from "@/components/shared/Container";
+import { HomeSection } from "@/components/shared/HomeSection";
+import {
+  SectionHeading,
+  SectionTitleAccent,
+} from "@/components/shared/SectionHeading";
+import {
+  premiumCard,
+  premiumCardAccentBar,
+  premiumImageOverlay,
+} from "@/components/shared/premium-ui";
 
 const FEATURES = [
   {
-    icon: ShieldCheck,
-    number: "01",
-    title: "Safety comes first",
+    icon: BusFront,
+    image: "/images/bus2.webp",
+    title: "Well-Maintained Coaches",
     description:
-      "Travel with a professionally maintained fleet designed with group safety and comfort in mind.",
+      "Vehicles are maintained and serviced on a regular basis.",
   },
   {
-    icon: BadgeCheck,
-    number: "02",
-    title: "Experienced drivers",
+    icon: UserCheck,
+    image: "/services/intercity.webp",
+    title: "Experienced Drivers",
     description:
-      "Professional drivers focused on safe, comfortable, and dependable group transportation.",
-  },
-  {
-    icon: Wallet,
-    number: "03",
-    title: "Simple group pricing",
-    description:
-      "One charter, one vehicle, and one straightforward quote for your entire group.",
+      "Drivers are experienced with groups and long-distance routes.",
   },
   {
     icon: MapPinned,
-    number: "04",
-    title: "Flexible travel plans",
-    description:
-      "Choose pickup locations, stops, schedules, and routes that work for your group.",
+    image: "/services/charters.webp",
+    title: "Built Around Your Itinerary",
+    description: "Transportation according to your itinerary.",
   },
   {
-    icon: Clock3,
-    number: "05",
-    title: "Reliable scheduling",
+    icon: UsersRound,
+    image: "/services/sports-teams.webp",
+    title: "Made for Group Logistics",
     description:
-      "Keep your trip organized with dependable pickups and drop-offs built around your itinerary.",
+      "Keep your group together with a charter bus loaded with amenities.",
   },
   {
-    icon: Headphones,
-    number: "06",
-    title: "Dedicated support",
+    icon: Luggage,
+    image: "/images/bus4.webp",
+    title: "Luxury Coach Buses",
     description:
-      "Get help before and during your trip from a team that keeps your journey moving smoothly.",
+      "Comfortable seating, ample luggage space, and loaded amenities.",
+  },
+  {
+    icon: CheckCircle2,
+    image: "/hero/commitment.webp",
+    title: "One Coach, One Group",
+    description:
+      "Everyone stays together without arranging multiple vehicles.",
   },
 ];
 
 export function WhyChooseCharter() {
   return (
-    <section className="relative overflow-hidden bg-[#fff8fa] py-20 sm:py-24 lg:py-32">
-      {/* =========================================================
-          BACKGROUND DECORATION
-      ========================================================= */}
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -left-48
-          top-20
-          h-[420px]
-          w-[420px]
-          rounded-full
-          bg-[#f2b3c7]/30
-          blur-3xl
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -right-48
-          bottom-0
-          h-[420px]
-          w-[420px]
-          rounded-full
-          bg-white
-          blur-3xl
-        "
-      />
+    <HomeSection id="why-go-coach" tone="white" className="overflow-hidden">
+      <div className="pointer-events-none absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-primary-200/20 blur-[100px]" />
+      <div className="pointer-events-none absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-primary-200/12 blur-[110px]" />
 
       <Container className="relative">
-        {/* =========================================================
-            SECTION HEADER
-        ========================================================= */}
+        <SectionHeading
+          layout="split"
+          eyebrow="Why Go Coach"
+          title={
+            <>
+              Why groups choose
+              <SectionTitleAccent>Go Coach Charters</SectionTitleAccent>
+            </>
+          }
+          description="Everything you need for comfortable, organized, and stress-free group transportation — all in one coach."
+        />
 
-        <div className="mx-auto max-w-3xl text-center">
-          <span
-            className="
-              inline-flex
-              items-center
-              rounded-full
-              border
-              border-[#f2b3c7]
-              bg-white/80
-              px-4
-              py-2
-              text-xs
-              font-bold
-              uppercase
-              tracking-[0.18em]
-              text-primary-800
-              shadow-sm
-            "
-          >
-            Why travel with us
-          </span>
+        <div className="grid gap-6 lg:grid-cols-12 lg:gap-8 xl:gap-10">
+          {/* Featured panel with hero image */}
+          <div className="relative min-h-[480px] overflow-hidden rounded-[28px] shadow-[0_28px_72px_rgba(53,0,20,0.22)] ring-1 ring-primary-800/40 sm:min-h-[520px] lg:col-span-5 lg:min-h-[560px]">
+            <Image
+              src="/hero/edmonton_calgary_charter_buses_background.webp"
+              alt="Go Coach charter buses serving Edmonton and Calgary"
+              fill
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              className="object-cover object-center"
+              priority
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-950/95 via-primary-950/75 to-primary-950/55" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary-900/40 via-transparent to-primary-950/30" />
 
-          <h2
-            className="
-              mt-5
-              text-4xl
-              font-bold
-              leading-[1.08]
-              tracking-tight
-              text-slate-950
-              sm:text-5xl
-              lg:text-6xl
-            "
-          >
-            A better way to move
-            <span className="block text-primary-800">
-              your group.
-            </span>
-          </h2>
+            {/* Accent frame */}
+            <div
+              className="pointer-events-none absolute -right-3 -top-3 hidden h-[calc(100%-1.5rem)] w-[calc(100%-1.5rem)] rounded-[28px] border border-primary-200/25 sm:block"
+              aria-hidden
+            />
 
-          <p
-            className="
-              mx-auto
-              mt-5
-              max-w-2xl
-              text-base
-              leading-7
-              text-slate-600
-              sm:text-lg
-              sm:leading-8
-            "
-          >
-            From planning to arrival, we make group transportation
-            comfortable, organized, and stress-free.
-          </p>
-        </div>
+            <div className="relative flex h-full min-h-[480px] flex-col p-6 sm:min-h-[520px] sm:p-8 lg:min-h-[560px] lg:p-11">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-200 text-primary-950 shadow-[0_8px_24px_rgba(242,179,199,0.35)] ring-1 ring-white/25">
+                <BusFront className="h-8 w-8" strokeWidth={1.8} />
+              </div>
 
-        {/* =========================================================
-            FEATURE CARDS
-        ========================================================= */}
+              <div className="mt-10 flex-1 sm:mt-12">
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary-200">
+                  Group travel made simple
+                </p>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-6">
-          {FEATURES.map(
-            ({ icon: Icon, number, title, description }) => (
-              <article
-                key={number}
-                className="
-                  group
-                  relative
-                  flex
-                  min-h-[330px]
-                  flex-col
-                  overflow-hidden
-                  rounded-[28px]
-                  border
-                  border-[#f2b3c7]/45
-                  bg-gradient-to-b
-                  from-white
-                  via-white
-                  to-[#f2b3c7]/15
-                  p-7
-                  shadow-[0_12px_45px_rgba(80,30,50,0.06)]
-                  sm:p-8
-                "
-              >
-                {/* Top accent */}
-                <div
-                  className="
-                    absolute
-                    left-0
-                    right-0
-                    top-0
-                    h-[3px]
-                    bg-gradient-to-r
-                    from-[#f2b3c7]
-                    via-primary-700
-                    to-[#f2b3c7]
-                  "
-                />
+                <h3 className="mt-4 max-w-sm text-2xl font-bold leading-[1.08] tracking-[-0.03em] text-white sm:text-3xl lg:text-4xl">
+                  One comfortable coach.
+                  <span className="block text-primary-200">
+                    One organized journey.
+                  </span>
+                </h3>
 
-                {/* Soft decorative glow */}
-                <div
-                  className="
-                    pointer-events-none
-                    absolute
-                    -right-16
-                    -top-16
-                    h-40
-                    w-40
-                    rounded-full
-                    bg-[#f2b3c7]/20
-                    blur-3xl
-                  "
-                />
+                <p className="mt-6 max-w-md text-sm leading-7 text-white/70 sm:text-base sm:leading-8">
+                  Bring your group together, simplify logistics, and enjoy the
+                  journey with transportation designed around the way your group
+                  travels.
+                </p>
+              </div>
 
-                {/* =================================================
-                    TOP
-                ================================================= */}
+              <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-10">
+                <div className="rounded-2xl border border-white/12 bg-white/[0.08] p-4 backdrop-blur-md ring-1 ring-inset ring-white/10">
+                  <p className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                    5,000+
+                  </p>
+                  <p className="mt-1 text-xs font-medium text-white/55">
+                    Groups transported
+                  </p>
+                </div>
 
-                <div className="relative flex items-start justify-between">
-                  {/* Icon */}
+                <div className="rounded-2xl border border-white/12 bg-white/[0.08] p-4 backdrop-blur-md ring-1 ring-inset ring-white/10">
+                  <p className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                    13+
+                  </p>
+                  <p className="mt-1 text-xs font-medium text-white/55">
+                    Years of experience
+                  </p>
+                </div>
+              </div>
+
+              {/* Floating thumbnail strip */}
+              <div className="mt-6 flex gap-2.5 sm:mt-8">
+                {[
+                  { src: "/images/bus2.webp", alt: "Go Coach charter fleet" },
+                  { src: "/images/bus3.webp", alt: "Group charter bus exterior" },
+                  { src: "/images/bus5.webp", alt: "Coach bus on the road" },
+                ].map((thumb) => (
                   <div
-                    className="
-                      flex
-                      h-14
-                      w-14
-                      items-center
-                      justify-center
-                      rounded-2xl
-                      border
-                      border-[#f2b3c7]/60
-                      bg-[#f2b3c7]/30
-                      text-primary-800
-                    "
+                    key={thumb.src}
+                    className="relative h-14 w-[4.5rem] overflow-hidden rounded-xl ring-2 ring-white/25 sm:h-16 sm:w-20"
                   >
-                    <Icon
-                      className="h-6 w-6"
-                      strokeWidth={1.7}
+                    <Image
+                      src={thumb.src}
+                      alt={thumb.alt}
+                      fill
+                      sizes="80px"
+                      className="object-cover"
                     />
                   </div>
+                ))}
+              </div>
+            </div>
+          </div>
 
-                  {/* Number */}
-                  <span
-                    className="
-                      select-none
-                      text-5xl
-                      font-black
-                      leading-none
-                      tracking-[-0.08em]
-                      text-[#f2b3c7]/80
-                    "
-                  >
-                    {number}
+          {/* Feature grid with images */}
+          <div className="grid items-stretch gap-3 sm:grid-cols-2 sm:gap-4 lg:col-span-7">
+            {FEATURES.map(({ icon: Icon, image, title, description }, index) => (
+              <article
+                key={title}
+                className={premiumCard(
+                  "flex h-full flex-col overflow-hidden p-0",
+                  "light"
+                )}
+              >
+                <div className="relative aspect-[16/10] shrink-0 overflow-hidden">
+                  <Image
+                    src={image}
+                    alt={title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                  />
+                  <div className={premiumImageOverlay} />
+                  <span className="absolute left-4 top-4 text-[11px] font-bold tabular-nums text-white/90">
+                    0{index + 1}
+                  </span>
+                  <span className="absolute bottom-4 left-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 text-primary-800 shadow-lg ring-1 ring-white/50 transition-colors duration-300 group-hover:bg-primary-200">
+                    <Icon className="h-5 w-5" strokeWidth={1.8} />
                   </span>
                 </div>
 
-                {/* =================================================
-                    CONTENT
-                ================================================= */}
-
-                <div className="relative mt-8">
-                  <p
-                    className="
-                      text-[11px]
-                      font-bold
-                      uppercase
-                      tracking-[0.18em]
-                      text-primary-700
-                    "
-                  >
-                    Why choose us
-                  </p>
-
-                  <h3
-                    className="
-                      mt-2
-                      text-xl
-                      font-bold
-                      tracking-tight
-                      text-slate-950
-                      sm:text-2xl
-                    "
-                  >
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <h3 className="text-base font-bold tracking-[-0.02em] text-primary-950 sm:text-lg">
                     {title}
                   </h3>
-
-                  <p
-                    className="
-                      mt-3
-                      text-sm
-                      leading-7
-                      text-slate-500
-                    "
-                  >
+                  <p className="mt-2 flex-1 text-sm leading-6 text-primary-950/55">
                     {description}
                   </p>
                 </div>
 
-                {/* =================================================
-                    FOOTER
-                ================================================= */}
-
-                <div className="mt-auto pt-7">
-                  <div
-                    className="
-                      h-px
-                      w-full
-                      bg-gradient-to-r
-                      from-[#f2b3c7]/60
-                      via-slate-200
-                      to-transparent
-                    "
-                  />
-
-                  <div className="flex items-center justify-between pt-5">
-                    <span
-                      className="
-                        text-xs
-                        font-semibold
-                        uppercase
-                        tracking-[0.12em]
-                        text-slate-400
-                      "
-                    >
-                      Group transportation
-                    </span>
-
-                    <span
-                      className="
-                        flex
-                        h-8
-                        w-8
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-[#f2b3c7]/70
-                        bg-white
-                        text-primary-700
-                      "
-                    >
-                      <ArrowUpRight className="h-4 w-4" />
-                    </span>
-                  </div>
-                </div>
+                <div className={premiumCardAccentBar} />
               </article>
-            ),
-          )}
+            ))}
+          </div>
         </div>
-
-  
       </Container>
-    </section>
+    </HomeSection>
   );
 }

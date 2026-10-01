@@ -127,6 +127,11 @@
   --color-brand-accent: var(--brand-accent);
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
 body {
   background: var(--color-background);
   color: var(--color-foreground);

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ChevronDown, Phone } from "lucide-react";
 import { Button } from "@/components/shared/Button";
-import { contactPhone, mainNav } from "@/data/navigation";
+import { contactPhone, homeSections, mainNav } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 
 interface MobileMenuProps {
@@ -25,7 +25,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       <nav className="flex flex-col gap-1 px-4 py-4">
         {mainNav.map((item) =>
           item.children ? (
-            <div key={item.href}>
+            <div key={item.label}>
               <button
                 type="button"
                 onClick={() => setOpenDropdown((prev) => !prev)}
@@ -42,7 +42,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <div className="ml-3 flex flex-col gap-1 border-l border-border pl-3">
                   {item.children.map((child) => (
                     <Link
-                      key={child.href}
+                      key={child.label}
                       href={child.href}
                       onClick={onClose}
                       className="rounded-lg px-3 py-2 text-sm text-foreground hover:bg-surface-muted"
@@ -55,7 +55,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </div>
           ) : (
             <Link
-              key={item.href}
+              key={item.label}
               href={item.href}
               onClick={onClose}
               className="rounded-lg px-3 py-2.5 text-sm font-medium text-foreground hover:bg-surface-muted"
@@ -74,7 +74,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           {contactPhone.label}
         </a>
 
-        <Button href="/contact" className="mt-2 w-full" onClick={onClose}>
+        <Button href={homeSections.getStarted} className="mt-2 w-full" onClick={onClose}>
           Get A Quote
         </Button>
       </nav>

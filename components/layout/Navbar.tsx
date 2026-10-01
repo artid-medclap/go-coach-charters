@@ -8,7 +8,7 @@ import { Container } from "@/components/shared/Container";
 import { Button } from "@/components/shared/Button";
 import { Logo } from "@/components/shared/Logo";
 import { MobileMenu } from "@/components/layout/MobileMenu";
-import { contactPhone, mainNav } from "@/data/navigation";
+import { contactPhone, homeSections, mainNav } from "@/data/navigation";
 import { useMobileMenu } from "@/hooks/useMobileMenu";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +29,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <div className="border-none bg-background/95 backdrop-blur">
+    <div className="border-b border-primary-100/80 bg-white/95 shadow-[0_4px_24px_rgba(53,0,20,0.04)] backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between gap-4">
         <Logo />
 
@@ -40,7 +40,7 @@ export function Navbar() {
             if (item.children) {
               return (
                 <div
-                  key={item.href}
+                  key={item.label}
                   ref={dropdownRef}
                   className="relative"
                   onMouseEnter={() => setOpenDropdown(true)}
@@ -81,7 +81,7 @@ export function Navbar() {
                     <div className="overflow-hidden rounded-2xl border border-border bg-background p-2 shadow-xl">
                       {item.children.map((child) => (
                         <Link
-                          key={child.href}
+                          key={child.label}
                           href={child.href}
                           onClick={() => setOpenDropdown(false)}
                           className="group/item flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-primary-50 hover:text-primary-700"
@@ -98,7 +98,7 @@ export function Navbar() {
 
             return (
               <Link
-                key={item.href}
+                key={item.label}
                 href={item.href}
                 className={cn(
                   "group/nav relative py-2 text-md font-medium transition-colors hover:text-primary-600",
@@ -126,7 +126,7 @@ export function Navbar() {
             {contactPhone.label}
           </a>
 
-          <Button href="/contact" size="sm">
+          <Button href={homeSections.getStarted} size="sm">
             Get A Quote
           </Button>
         </div>

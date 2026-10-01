@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HeroSection } from "@/components/home/HeroSection";
 import { TrustBar } from "@/components/home/TrustBar";
 import { FleetShowcase } from "@/components/home/FleetShowcase";
-import { ServicesSection } from "@/components/home/GroupUseCases";
+import { ServicesSection } from "@/components/home/ServicesSection";
 import { BookingSteps } from "@/components/home/BookingSteps";
 import { Amenities } from "@/components/home/Amenities";
 import { FeaturedRoutes } from "@/components/home/FeaturedRoutes";
@@ -11,6 +11,7 @@ import { CustomerReviews } from "@/components/home/CustomerReviews";
 import { FaqSection } from "@/components/home/FaqSection";
 import { FinalCta } from "@/components/home/FinalCta";
 import { CommitmentSection } from "@/components/home/OurCommitment";
+import { WhyChooseCharter } from "@/components/home/WhyChooseCharter";
 
 export const metadata: Metadata = {
   title: "Charter Bus Rentals for Groups Across Alberta",
@@ -25,14 +26,15 @@ export default function HomePage() {
       <HeroSection />
       <TrustBar />
       <CommitmentSection />
-      <FeaturedRoutes/>
+      <WhyChooseCharter/>
       <ServicesSection />
-      <BookingSteps />
-      <FleetShowcase />
+      <FeaturedRoutes/>
+      {/* <BookingSteps /> */}
+      {/* <FleetShowcase /> */}
       <Amenities />
-      <Gallery />
-      <CustomerReviews />
-      <FaqSection />
+      {/* <Gallery /> */}
+      {/* <CustomerReviews /> */}
+      {/* <FaqSection /> */}
       <FinalCta />
     </>
   );

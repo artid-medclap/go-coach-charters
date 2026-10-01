@@ -2,229 +2,170 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  ArrowUpRight,
   Bus,
   Compass,
-  Navigation,
   ShieldCheck,
   Users,
 } from "lucide-react";
 
 import { Container } from "@/components/shared/Container";
+import { HomeSection } from "@/components/shared/HomeSection";
+import {
+  SectionHeading,
+  SectionTitleAccent,
+} from "@/components/shared/SectionHeading";
+import { homeSections } from "@/data/navigation";
 import { charterRoutes, routeStats } from "@/data/charterRoutes";
 import { formatCurrency } from "@/lib/formatters";
 
 export function FeaturedRoutes() {
   return (
-    <section className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
-      {/* =========================================================
-          BACKGROUND AMBIENT DECORATION
-      ========================================================= */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-40 top-20 h-[460px] w-[460px] rounded-full bg-[#f2b3c7]/20 blur-[130px]" />
-        <div className="absolute -right-40 bottom-10 h-[460px] w-[460px] rounded-full bg-[#f2b3c7]/20 blur-[130px]" />
-      </div>
+    <HomeSection id="featured-routes" tone="white" className="overflow-hidden">
+      {/* Subtle geometric backdrop (reference-style) */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        aria-hidden
+        style={{
+          backgroundImage: `
+            linear-gradient(115deg, transparent 42%, rgb(242 179 199 / 0.12) 42%, rgb(242 179 199 / 0.12) 44%, transparent 44%),
+            linear-gradient(115deg, transparent 58%, rgb(242 179 199 / 0.08) 58%, rgb(242 179 199 / 0.08) 60%, transparent 60%)
+          `,
+          backgroundSize: "100% 480px, 100% 640px",
+          backgroundPosition: "top right, center left",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+      <div className="pointer-events-none absolute -left-40 top-10 h-[400px] w-[400px] rounded-full bg-primary-200/15 blur-[100px]" />
+      <div className="pointer-events-none absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-primary-200/10 blur-[110px]" />
 
       <Container className="relative">
-        {/* =======================================================
-            HEADER
-        ======================================================= */}
-        <div className="flex flex-col items-center text-center">
-          {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary-200/60 bg-white px-4 py-2 shadow-sm">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#f2b3c7]/30">
-              <Navigation className="h-3.5 w-3.5 text-primary-900" />
-            </span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-900">
-              Alberta Charter Corridors
-            </span>
-          </div>
+        <SectionHeading
+          align="center"
+          wide
+          eyebrow="We serve Western Canada & beyond"
+          title={
+            <>
+              Our featured
+              <SectionTitleAccent>charter routes</SectionTitleAccent>
+            </>
+          }
+          description="Reliable charter transportation connecting major cities, mountain destinations, regional hubs, and popular group travel destinations across Western Canada."
+        />
 
-          {/* Heading */}
-          <h2 className="mt-6 max-w-4xl text-4xl font-bold leading-[1.02] tracking-[-0.045em] text-primary-950 sm:text-5xl lg:text-6xl">
-            Our Featured
-            <span className="block text-primary-800">Charter Routes.</span>
-          </h2>
-
-          {/* Description */}
-          <p className="mt-6 max-w-2xl text-base leading-7 text-primary-950/60 sm:text-lg">
-            Reliable, point-to-point group travel connecting Alberta’s largest city centers,
-            rocky alpine gateways, and regional tournament hubs.
-          </p>
-        </div>
-
-        {/* =======================================================
-            COUNTING BADGES STATS BAR (SUFFICIENT SECTION METRICS)
-        ======================================================= */}
-        <div className="mt-12 sm:mt-16 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-          {routeStats.map((stat, idx) => (
-            <div
-              key={stat.id}
-              className="
-                group relative overflow-hidden rounded-2xl sm:rounded-3xl
-                border border-primary-200/60 bg-[#fff8fa] p-5 sm:p-6
-                transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-400 hover:shadow-md
-              "
-            >
-              <div className="flex items-center justify-between">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white shadow-xs text-primary-800">
-                  {idx === 0 && <Compass className="h-4 w-4" />}
-                  {idx === 1 && <Bus className="h-4 w-4" />}
-                  {idx === 2 && <Users className="h-4 w-4" />}
-                  {idx === 3 && <ShieldCheck className="h-4 w-4" />}
-                </span>
-                <span className="rounded-full bg-primary-100/80 px-2.5 py-0.5 text-[10px] font-bold text-primary-900">
-                  Verified
-                </span>
-              </div>
-
-              <div className="mt-4">
-                <p className="text-3xl font-extrabold tracking-tight text-primary-950 sm:text-4xl">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-sm font-bold text-primary-900">
-                  {stat.label}
-                </p>
-                <p className="mt-0.5 text-xs text-primary-950/50">
-                  {stat.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* =======================================================
-            FEATURED ROUTE CARDS (CLEAN & ONE-LINE CONTENT)
-        ======================================================= */}
-        <div className="mt-12 sm:mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {charterRoutes.map((route, index) => {
-            const routeNumber = String(index + 1).padStart(2, "0");
-
-            return (
+        {/* Destination-style route grid */}
+        <div className="mx-auto mt-10 max-w-6xl sm:mt-14">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
+            {charterRoutes.map((route) => (
               <Link
                 key={route.id}
-                href={`/booking?route=${route.slug}`}
-                className="
-                  group relative flex flex-col overflow-hidden
-                  rounded-[26px] border border-primary-200/60 bg-white
-                  shadow-xs transition-all duration-300
-                  hover:-translate-y-1.5 hover:border-primary-400 hover:shadow-xl
-                "
+                  href={homeSections.getStarted}
+                className="group relative block overflow-hidden rounded-2xl bg-primary-950 shadow-[0_10px_40px_rgba(53,0,20,0.1)] ring-1 ring-black/[0.04] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 hover:shadow-[0_24px_56px_rgba(53,0,20,0.16)] sm:rounded-[20px]"
               >
-                {/* Styled Inset Image Frame */}
-                <div className="p-3.5 sm:p-4 pb-0">
-                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-primary-950/5 ring-1 ring-black/5">
-                    {route.image ? (
-                      <Image
-                        src={route.image}
-                        alt={`${route.from} to ${route.to} charter bus`}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="
-                          object-cover object-center
-                          transition-transform duration-700 ease-out
-                          group-hover:scale-108
-                        "
-                      />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-primary-900/10 text-primary-800">
-                        <Bus className="h-10 w-10" />
-                      </div>
-                    )}
-
-                    {/* Subtle Top & Bottom Gradient Overlay */}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/25" />
-
-                    {/* Top Left: Route Number Pill */}
-                    <div className="absolute left-3 top-3">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/90 text-[11px] font-black text-primary-950 shadow-sm backdrop-blur-md">
-                        #{routeNumber}
-                      </span>
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  {route.image ? (
+                    <Image
+                      src={route.image}
+                      alt={`${route.from} to ${route.to} charter bus`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-primary-100 text-primary-800">
+                      <Bus className="h-10 w-10" />
                     </div>
+                  )}
 
-                    {/* Top Right: Starting Price Pill */}
-                    <div className="absolute right-3 top-3">
-                      <span className="rounded-full bg-primary-800/90 px-3 py-1 text-xs font-bold text-white shadow-sm backdrop-blur-md">
-                        From {formatCurrency(route.priceFrom)}
-                      </span>
-                    </div>
+                  {/* Legibility overlay */}
+                  <div className="absolute inset-0 bg-primary-950/35 transition-colors duration-500 group-hover:bg-primary-950/45" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-950/70 via-primary-950/20 to-primary-950/25" />
 
-                    {/* Bottom Left: Distance & Duration Pill */}
-                    <div className="absolute bottom-3 left-3">
-                      <span className="rounded-full bg-black/60 px-3 py-1 text-[11px] font-semibold text-white/90 backdrop-blur-md border border-white/10">
-                        {route.distance} • {route.duration}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card Content: Title + One Line Content */}
-                <div className="flex flex-1 flex-col justify-between p-4 sm:p-5">
-                  <div>
-                    {/* Route Cities */}
-                    <div className="flex items-center justify-between gap-2">
-                      <h3 className="flex items-center gap-2 text-base sm:text-lg font-bold text-primary-950 transition-colors group-hover:text-primary-800">
-                        <span>{route.from}</span>
-                        <ArrowRight className="h-4 w-4 text-primary-600 transition-transform group-hover:translate-x-1" />
-                        <span>{route.to}</span>
-                      </h3>
-                    </div>
-
-                    {/* One Line Content */}
-                    <p className="mt-1 text-xs sm:text-sm text-muted-foreground truncate">
-                      {route.description}
+                  {/* Centered route title (reference-style) */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+                    <p className="text-base font-extrabold uppercase tracking-[0.1em] text-white sm:text-xl md:text-2xl">
+                      {route.from}
+                    </p>
+                    <span
+                      className="my-2 block h-px w-8 bg-white/50 transition-all duration-500 group-hover:w-12"
+                      aria-hidden
+                    />
+                    <p className="text-base font-extrabold uppercase tracking-[0.1em] text-white sm:text-xl md:text-2xl">
+                      {route.to}
                     </p>
                   </div>
 
-                  {/* Clean Bottom Action Row */}
-                  <div className="mt-4 flex items-center justify-between border-t border-border/40 pt-3">
-                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-800 group-hover:text-primary-950 transition-colors">
-                      Book this route
-                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </span>
-                    <span className="text-[11px] font-medium text-muted-foreground">
-                      Direct charter
-                    </span>
+                  {/* Meta — visible on hover / focus */}
+                  <div className="absolute inset-x-0 bottom-0 bg-primary-950/85 px-3 py-2.5 backdrop-blur-sm sm:translate-y-full sm:py-3 sm:transition-transform sm:duration-500 sm:group-hover:translate-y-0 sm:group-focus-visible:translate-y-0">
+                    <div className="flex items-center justify-between gap-3 text-white">
+                      <div className="text-left text-[11px] font-medium text-white/75">
+                        <span>{route.distance}</span>
+                        <span className="mx-1.5 text-white/40">·</span>
+                        <span>{route.duration}</span>
+                      </div>
+                      <span className="shrink-0 text-xs font-bold text-primary-200">
+                        From {formatCurrency(route.priceFrom)}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </Link>
-            );
-          })}
+            ))}
+          </div>
         </div>
 
-        {/* =======================================================
-            BOTTOM CUSTOM ROUTE PROMPT
-        ======================================================= */}
-        <div className="mt-12 rounded-3xl border border-primary-200/60 bg-[#fff8fa] p-6 sm:p-8">
-          <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+        {/* Stats band */}
+        <div className="mx-auto mt-12 max-w-5xl overflow-hidden rounded-[28px] bg-primary-900 p-2 shadow-[0_20px_56px_rgba(53,0,20,0.2)] ring-1 ring-primary-800 sm:mt-14 sm:p-2.5">
+          <div className="grid grid-cols-2 divide-y divide-white/10 sm:grid-cols-4 sm:divide-x sm:divide-y-0">
+            {routeStats.map((stat, index) => (
+              <div
+                key={stat.id}
+                className="group relative px-5 py-6 text-center sm:px-6 sm:py-7"
+              >
+                <div className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-primary-200 ring-1 ring-white/10">
+                  {index === 0 && <Compass className="h-4 w-4" />}
+                  {index === 1 && <Bus className="h-4 w-4" />}
+                  {index === 2 && <Users className="h-4 w-4" />}
+                  {index === 3 && <ShieldCheck className="h-4 w-4" />}
+                </div>
+                <p className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-xs font-bold text-primary-100">
+                  {stat.label}
+                </p>
+                <p className="mt-1 text-[10px] leading-4 text-white/45">
+                  {stat.description}
+                </p>
+                <span className="absolute bottom-0 left-1/2 h-px w-0 -translate-x-1/2 bg-primary-300/70 transition-all duration-500 group-hover:w-3/4" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Custom route */}
+        <div className="mx-auto mt-6 max-w-5xl rounded-[28px] border border-primary-200/45 bg-white px-5 py-6 shadow-[0_10px_36px_rgba(53,0,20,0.06)] ring-1 ring-inset ring-primary-100 sm:px-8 sm:py-7">
+          <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
             <div>
-              <h3 className="text-lg font-bold text-primary-950 sm:text-xl">
-                Need a custom route or multi-day itinerary?
+              <h3 className="text-base font-bold text-primary-950 sm:text-lg">
+                Need a custom route?
               </h3>
-              <p className="mt-1 text-sm text-primary-950/60">
-                We design custom bus charters for destinations across Alberta, British Columbia, and Saskatchewan.
+              <p className="mt-1 text-xs leading-5 text-primary-950/55 sm:text-sm">
+                We can build a charter itinerary around your group&apos;s
+                destinations and schedule.
               </p>
             </div>
-
-            <div className="flex shrink-0 items-center gap-3">
-              <Link
-                href="/booking"
-                className="
-                  group inline-flex items-center gap-2.5 rounded-full
-                  bg-primary-800 px-6 py-3 text-sm font-bold text-white
-                  shadow-sm transition-all hover:bg-primary-900
-                "
-              >
-                <span>Plan Custom Route</span>
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
+            <Link
+              href={homeSections.getStarted}
+              className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-primary-800 px-6 py-3 text-xs font-bold text-white shadow-[0_10px_28px_rgba(53,0,20,0.15)] transition-all hover:bg-primary-900 hover:shadow-[0_14px_36px_rgba(53,0,20,0.2)]"
+            >
+              Plan Your Route
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </Container>
-    </section>
+    </HomeSection>
   );
 }
 
-// Alias export to support both naming styles
 export const OurFeaturedRoutes = FeaturedRoutes;
