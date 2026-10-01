@@ -1,30 +1,43 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Award, ArrowRight, ShieldCheck, Users, CalendarCheck, UserCheck, Star, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  Bus,
+  CalendarCheck,
+  Phone,
+  ShieldCheck,
+  Star,
+  Users,
+} from "lucide-react";
 
 import { Container } from "@/components/shared/Container";
 import { homeSections } from "@/data/navigation";
 
-const highlights = [
+const highlights: {
+  icon: typeof CalendarCheck;
+  label: string;
+  iconFilled?: boolean;
+}[] = [
   {
     icon: CalendarCheck,
     label: "13+ Years of Experience",
   },
   {
     icon: ShieldCheck,
-    label: "Licensed and Insured Fleet",
-  },
-  {
-    icon: UserCheck,
-    label: "Professional Drivers",
+    label: "Licensed and insured fleet",
   },
   {
     icon: Users,
-    label: "5,000 Groups Served",
+    label: "5,000 groups served",
+  },
+  {
+    icon: Bus,
+    label: "56-passenger charter bus",
   },
   {
     icon: Star,
-    label: "4.9/5 Average Rating",
+    label: "4.9/5 average rating",
+    iconFilled: true,
   },
 ];
 
@@ -79,10 +92,10 @@ export function HeroSection() {
         </div> */}
 
         {/* Heading */}
-        <h1 className="mx-auto mt-5 max-w-5xl text-balance text-3xl font-bold leading-[1.05] tracking-[-0.045em] text-white drop-shadow-[0_3px_20px_rgba(0,0,0,0.45)] sm:mt-7 sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="mx-auto mt-5 max-w-5xl text-balance text-3xl font-bold leading-[1.14] tracking-[-0.028em] text-white drop-shadow-[0_3px_20px_rgba(0,0,0,0.45)] sm:mt-7 sm:text-5xl sm:leading-[1.12] md:text-6xl lg:text-7xl lg:leading-[1.08]">
           Charter Bus Rental
-          <span className="block text-primary-200">
-            in Alberta
+          <span className="mt-2 block text-primary-200 sm:mt-2.5">
+            In Alberta
           </span>
         </h1>
 
@@ -95,15 +108,8 @@ export function HeroSection() {
           <span className="h-px w-10 bg-primary-200/60 sm:w-14" />
         </div>
 
-        {/* Description */}
-        <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-white/75 sm:text-base lg:text-lg lg:leading-8">
-        Reliable group transportation for corporate events, school trips, 
-        sports teams, weddings, private tours, 
-        and long-distance travel across Alberta and Western Canada. 
-        </p>
-
         {/* CTA */}
-        <div className="mt-8 flex w-full max-w-md flex-col items-stretch gap-3 sm:mt-9 sm:max-w-none sm:flex-row sm:items-center sm:justify-center">
+        <div className="mt-8 flex w-full max-w-md flex-col items-stretch gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:items-center sm:justify-center">
           <Link
             href={homeSections.getStarted}
             className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-primary-600 px-6 py-3.5 text-sm font-bold text-white shadow-[0_12px_35px_rgba(158,0,56,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-[0_16px_40px_rgba(158,0,56,0.32)] sm:w-auto"
@@ -140,13 +146,19 @@ export function HeroSection() {
         </p>
 
 
-         <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mt-5">
-          {highlights.map(({ icon: Icon, label }) => (
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5 sm:mt-9 sm:gap-3">
+          {highlights.map(({ icon: Icon, label, iconFilled }) => (
             <span
               key={label}
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-2 text-[11px] font-semibold text-white shadow-[0_8px_30px_rgba(0,0,0,0.12)] backdrop-blur-md sm:px-4 sm:text-xs"
             >
-              <Icon className="h-4 w-4 text-primary-200" />
+              <Icon
+                className={
+                  iconFilled
+                    ? "h-4 w-4 shrink-0 fill-primary-200 text-primary-200"
+                    : "h-4 w-4 shrink-0 text-primary-200"
+                }
+              />
               {label}
             </span>
           ))}

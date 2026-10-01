@@ -17,6 +17,13 @@ import {
 import { homeSections } from "@/data/navigation";
 import { charterRoutes, routeStats } from "@/data/charterRoutes";
 import { formatCurrency } from "@/lib/formatters";
+import {
+  premiumImageHover,
+  premiumMediaAspect,
+  premiumRouteCard,
+  premiumRouteGradient,
+  premiumRouteOverlay,
+} from "@/components/shared/premium-ui";
 
 export function FeaturedRoutes() {
   return (
@@ -42,11 +49,11 @@ export function FeaturedRoutes() {
         <SectionHeading
           align="center"
           wide
-          eyebrow="We serve Western Canada & beyond"
+          eyebrow="We Serve Western Canada & Beyond"
           title={
             <>
-              Our featured
-              <SectionTitleAccent>charter routes</SectionTitleAccent>
+              Our Featured
+              <SectionTitleAccent>Charter Routes</SectionTitleAccent>
             </>
           }
           description="Reliable charter transportation connecting major cities, mountain destinations, regional hubs, and popular group travel destinations across Western Canada."
@@ -54,21 +61,21 @@ export function FeaturedRoutes() {
 
         {/* Destination-style route grid */}
         <div className="mx-auto mt-10 max-w-6xl sm:mt-14">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
+          <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
             {charterRoutes.map((route) => (
               <Link
                 key={route.id}
-                  href={homeSections.getStarted}
-                className="group relative block overflow-hidden rounded-2xl bg-primary-950 shadow-[0_10px_40px_rgba(53,0,20,0.1)] ring-1 ring-black/[0.04] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 hover:shadow-[0_24px_56px_rgba(53,0,20,0.16)] sm:rounded-[20px]"
+                href={homeSections.getStarted}
+                className={premiumRouteCard()}
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <div className={premiumMediaAspect}>
                   {route.image ? (
                     <Image
                       src={route.image}
                       alt={`${route.from} to ${route.to} charter bus`}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                      className={premiumImageHover}
                     />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-primary-100 text-primary-800">
@@ -76,28 +83,25 @@ export function FeaturedRoutes() {
                     </div>
                   )}
 
-                  {/* Legibility overlay */}
-                  <div className="absolute inset-0 bg-primary-950/35 transition-colors duration-500 group-hover:bg-primary-950/45" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary-950/70 via-primary-950/20 to-primary-950/25" />
+                  <div className={premiumRouteOverlay} />
+                  <div className={premiumRouteGradient} />
 
-                  {/* Centered route title (reference-style) */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-                    <p className="text-base font-extrabold uppercase tracking-[0.1em] text-white sm:text-xl md:text-2xl">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center px-4 pb-14 pt-4 text-center sm:px-5 sm:pb-16">
+                    <p className="line-clamp-2 min-h-[2.5rem] w-full text-balance text-lg font-extrabold uppercase leading-tight tracking-[0.08em] text-white sm:min-h-[2.75rem] sm:text-xl">
                       {route.from}
                     </p>
                     <span
-                      className="my-2 block h-px w-8 bg-white/50 transition-all duration-500 group-hover:w-12"
+                      className="my-2 block h-px w-8 shrink-0 bg-white/50 transition-all duration-500 group-hover:w-12"
                       aria-hidden
                     />
-                    <p className="text-base font-extrabold uppercase tracking-[0.1em] text-white sm:text-xl md:text-2xl">
+                    <p className="line-clamp-2 min-h-[2.5rem] w-full text-balance text-lg font-extrabold uppercase leading-tight tracking-[0.08em] text-white sm:min-h-[2.75rem] sm:text-xl">
                       {route.to}
                     </p>
                   </div>
 
-                  {/* Meta — visible on hover / focus */}
-                  <div className="absolute inset-x-0 bottom-0 bg-primary-950/85 px-3 py-2.5 backdrop-blur-sm sm:translate-y-full sm:py-3 sm:transition-transform sm:duration-500 sm:group-hover:translate-y-0 sm:group-focus-visible:translate-y-0">
-                    <div className="flex items-center justify-between gap-3 text-white">
-                      <div className="text-left text-[11px] font-medium text-white/75">
+                  <div className="absolute inset-x-0 bottom-0 min-h-[44px] border-t border-white/10 bg-primary-950/90 px-3 py-2.5 backdrop-blur-sm sm:px-4 sm:py-3">
+                    <div className="flex items-center justify-between gap-2 text-white">
+                      <div className="min-w-0 text-left text-[11px] font-medium leading-snug text-white/75">
                         <span>{route.distance}</span>
                         <span className="mx-1.5 text-white/40">·</span>
                         <span>{route.duration}</span>

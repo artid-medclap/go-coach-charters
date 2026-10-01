@@ -54,7 +54,7 @@ export function SectionHeading({
       </span>
       <span
         className={cn(
-          "text-[10px] font-bold uppercase tracking-[0.2em]",
+          "text-[10px] font-bold uppercase tracking-[0.16em]",
           isInverted ? "text-primary-200" : "text-primary-900"
         )}
       >
@@ -66,10 +66,10 @@ export function SectionHeading({
   const titleEl = (
     <h2
       className={cn(
-        "font-bold leading-[1.05] tracking-[-0.045em]",
-        eyebrow ? "mt-6" : "mt-0",
+        "font-bold leading-[1.14] tracking-[-0.028em] sm:leading-[1.12] lg:leading-[1.1]",
+        eyebrow ? "mt-7 sm:mt-8" : "mt-0",
         isInverted ? "text-white" : "text-primary-950",
-        "text-balance text-3xl sm:text-4xl md:text-5xl lg:text-6xl",
+        "text-balance text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] xl:text-6xl",
         isCenter && "mx-auto",
         wide ? "max-w-4xl" : "max-w-3xl",
         !isCenter && "max-w-none",
@@ -83,7 +83,7 @@ export function SectionHeading({
   const accentLine =
     isCenter && !isInverted ? (
       <div
-        className="mx-auto mt-5 flex items-center justify-center gap-2"
+        className="mx-auto mt-6 flex items-center justify-center gap-2 sm:mt-7"
         aria-hidden
       >
         <span className="h-px w-10 bg-gradient-to-r from-transparent to-primary-200/80" />
@@ -95,8 +95,8 @@ export function SectionHeading({
   const descriptionEl = description ? (
     <p
       className={cn(
-        "text-base leading-7 sm:text-lg",
-        accentLine ? "mt-5" : "mt-6",
+        "text-base leading-7 sm:text-lg sm:leading-8",
+        accentLine ? "mt-6 sm:mt-7" : "mt-6 sm:mt-7",
         isInverted ? "text-white/60" : "text-primary-950/55",
         isCenter && "mx-auto max-w-2xl",
         isSplit && "max-w-md lg:mt-0",
@@ -153,7 +153,7 @@ export function SectionTitleAccent({
   return (
     <span
       className={cn(
-        "block",
+        "mt-2 block sm:mt-2.5",
         inverted ? "text-primary-200" : "text-primary-700",
         className
       )}

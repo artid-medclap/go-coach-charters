@@ -48,7 +48,7 @@ export function TrustBar() {
       <Container className="relative mb-3 flex items-center justify-center gap-2.5 sm:mb-3.5">
         <span className="hidden h-px w-6 bg-primary-200/80 sm:block" aria-hidden />
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-800/65">
-          Trusted by groups across Alberta
+          Trusted by Groups Across Alberta
         </p>
         <span className="hidden h-px w-6 bg-primary-200/80 sm:block" aria-hidden />
       </Container>

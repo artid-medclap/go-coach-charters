@@ -4,7 +4,6 @@ import {
   ArrowUpRight,
   Bus,
   CalendarRange,
-  MapPin,
   Route,
   ShieldCheck,
   Star,
@@ -54,14 +53,6 @@ const PILLARS: {
   },
 ];
 
-const SERVICE_AREAS = [
-  "Calgary",
-  "Edmonton",
-  "Red Deer",
-  "Banff & Jasper",
-  "Western Canada",
-];
-
 const GROUP_TYPES = [
   "School & educational trips",
   "Corporate meetings & conferences",
@@ -80,68 +71,82 @@ export function CommitmentSection() {
         <SectionHeading
           align="center"
           wide
-          eyebrow="Our commitment"
+          eyebrow="Our Commitment"
           title={
             <>
-              Your reliable partner for
-              <SectionTitleAccent>group transportation</SectionTitleAccent>
+              Your Reliable Partner for
+              <SectionTitleAccent>Group Transportation</SectionTitleAccent>
             </>
           }
-          description="Since 2013, Go Coach Charters has moved groups across Alberta and Western Canada — together, on time, and comfortably from pickup to drop-off."
+          description="Reliable group transportation for corporate events, school trips, sports teams, weddings, private tours, and long-distance travel across Alberta and Western Canada."
         />
 
-        <div className="mt-10 space-y-3 sm:mt-12 lg:mt-16">
-          {/* —— Row 1: visual + story (balanced 5 / 7) —— */}
-          <div className="grid gap-6 lg:grid-cols-12 lg:gap-8 xl:gap-10">
-            <div className="relative lg:col-span-5">
-              <div className="relative h-full min-h-[320px] overflow-hidden rounded-[28px] bg-primary-900 shadow-[0_28px_72px_rgba(53,0,20,0.2)] ring-1 ring-primary-200/25 sm:min-h-[380px] lg:min-h-0 lg:aspect-[4/5]">
-                <Image
-                  src="/hero/commitment.webp"
-                  alt="Charter bus ready for group travel"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                  className="object-cover object-center"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-950/80 via-primary-950/15 to-transparent" />
-                <div className="absolute left-5 top-5">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-2 backdrop-blur-md">
-                    <ShieldCheck className="h-3.5 w-3.5 text-primary-200" />
-                    <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white">
-                      Since 2013
+        <div className="mt-10 space-y-8 sm:mt-12 sm:space-y-10 lg:mt-16 lg:space-y-12">
+          {/* Image + story only — avoids empty left column below */}
+          <div className="grid items-stretch gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-14">
+            <div className="lg:col-span-5">
+              <div className="relative h-full min-h-[360px] overflow-hidden rounded-[28px] bg-primary-900 shadow-[0_24px_64px_rgba(53,0,20,0.16)] ring-1 ring-primary-200/30 sm:min-h-[420px] lg:min-h-0 lg:rounded-[32px]">
+                <div className="relative aspect-[4/5] h-full w-full sm:aspect-[3/4] lg:absolute lg:inset-0 lg:aspect-auto">
+                  <Image
+                    src="/hero/commitment.webp"
+                    alt="Charter bus ready for group travel"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                    className="object-cover object-[center_42%] sm:object-[center_40%] lg:object-[center_38%]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-950/70 via-primary-950/10 to-transparent" />
+                  <div className="absolute left-5 top-5 sm:left-6 sm:top-6">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-2 backdrop-blur-md">
+                      <ShieldCheck className="h-3.5 w-3.5 text-primary-200" />
+                      <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white">
+                        Since 2013
+                      </span>
                     </span>
-                  </span>
-                </div>
-                <div className="absolute inset-x-5 bottom-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-200">
-                    Alberta & Western Canada
-                  </p>
-                  <p className="mt-2 text-xl font-bold tracking-[-0.03em] text-white sm:text-2xl">
-                    One coach.
-                    <span className="text-primary-200"> One group.</span>
-                  </p>
+                  </div>
+                  <div className="absolute inset-x-5 bottom-5 sm:inset-x-6 sm:bottom-6">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-200">
+                      Alberta & Western Canada
+                    </p>
+                    <p className="mt-2 text-xl font-bold tracking-[-0.03em] text-white sm:text-2xl">
+                      One coach.
+                      <span className="text-primary-200"> One group.</span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 lg:col-span-7">
+            <div className="lg:col-span-7">
               <div
                 className={premiumCard(
-                  "flex flex-1 flex-col justify-center p-6 sm:p-8 lg:p-9",
+                  "flex h-full flex-col p-6 sm:p-8 lg:p-9",
                   "light"
                 )}
               >
-                <p className="text-base leading-7 text-primary-950/60 sm:text-lg sm:leading-8">
-                  Whether you are coordinating a school field trip, corporate
-                  shuttle, sports road game, or wedding guest loop, we handle
-                  logistics so you can focus on the event — not parking, carpools,
-                  or late arrivals.
-                </p>
-                <p className="mt-4 text-base leading-7 text-primary-950/60 sm:text-lg sm:leading-8">
-                  Planners, teachers, and administrators work with us every week
-                  for clear pricing, flexible routing, and drivers who know group
-                  travel across city corridors and long-distance routes.
-                </p>
-                <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-primary-200/40 pt-5">
+                <div className="space-y-4 sm:space-y-5">
+                  <p className="text-base leading-7 text-primary-950/60 sm:text-lg sm:leading-8">
+                    Go Coach Charters has been providing group transportation
+                    across Alberta and Western Canada since 2013. We offer
+                    charter bus rental for school trips, corporate travel, sports
+                    teams, family outings, events, and long-distance journeys.
+                  </p>
+                  <p className="text-base leading-7 text-primary-950/60 sm:text-lg sm:leading-8">
+                    With years of experience in group travel, our team
+                    understands the importance of reliable service and safety.
+                    Our professional drivers and well-maintained coaches help
+                    groups travel comfortably and with confidence.
+                  </p>
+                  <p className="text-base leading-7 text-primary-950/60 sm:text-lg sm:leading-8">
+                    For larger groups, our 56-passenger charter bus offers
+                    comfortable seating, luggage space, and select onboard
+                    amenities, including Wi-Fi and washrooms. Whether you are
+                    planning a local trip or travelling across Western Canada,
+                    Go Coach Charters provides a comfortable and practical way
+                    to keep your group together.
+                  </p>
+                </div>
+
+                <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-primary-200/40 pt-6">
                   <span className="inline-flex items-center gap-2 text-xs font-semibold text-primary-950/70">
                     <Star className="h-4 w-4 fill-primary-600 text-primary-600" />
                     Trusted by schools, teams & businesses
@@ -153,92 +158,74 @@ export function CommitmentSection() {
                 </div>
                 <div className={premiumCardAccentBar} />
               </div>
-
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div
-                  className={premiumCard(
-                    "flex h-full flex-col p-5 sm:p-6",
-                    "soft"
-                  )}
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-primary-800 ring-1 ring-primary-200/50">
-                      <MapPin className="h-4 w-4" />
-                    </span>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary-900">
-                      Where we operate
-                    </p>
-                  </div>
-                  <ul className="mt-4 flex flex-wrap gap-2">
-                    {SERVICE_AREAS.map((area) => (
-                      <li
-                        key={area}
-                        className="rounded-full border border-primary-200/55 bg-white px-3 py-1.5 text-xs font-semibold text-primary-900"
-                      >
-                        {area}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className={premiumCardAccentBar} />
-                </div>
-
-                <div
-                  className={premiumCard(
-                    "flex h-full flex-col p-5 sm:p-6",
-                    "soft"
-                  )}
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-primary-800 ring-1 ring-primary-200/50">
-                      <Bus className="h-4 w-4" />
-                    </span>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary-900">
-                      Groups we serve
-                    </p>
-                  </div>
-                  <ul className="mt-4 space-y-2">
-                    {GROUP_TYPES.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-center gap-2.5 text-sm text-primary-950/65"
-                      >
-                        <span className="h-1 w-1 shrink-0 rounded-full bg-primary-400" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className={premiumCardAccentBar} />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href={homeSections.whyGoCoach}
-                  className="group inline-flex h-12 w-full items-center justify-center gap-2.5 rounded-full bg-primary-800 px-6 text-sm font-bold text-white shadow-[0_12px_32px_rgba(53,0,20,0.18)] transition-all hover:bg-primary-900 hover:shadow-[0_16px_40px_rgba(53,0,20,0.22)] sm:flex-1"
-                >
-                  Learn more about us
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-transform group-hover:translate-x-0.5">
-                    <ArrowUpRight className="h-4 w-4" />
-                  </span>
-                </Link>
-                <Link
-                  href={homeSections.getStarted}
-                  className="inline-flex h-12 w-full items-center justify-center rounded-full border border-primary-200/80 bg-white px-6 text-sm font-bold text-primary-900 transition-colors hover:border-primary-300 hover:bg-accent-50 sm:flex-1"
-                >
-                  Get a free quote
-                </Link>
-              </div>
             </div>
           </div>
 
-          {/* —— Row 2: full-width stats band —— */}
-          <div className="overflow-hidden rounded-[28px] bg-primary-900 p-2 shadow-[0_20px_56px_rgba(53,0,20,0.22)] ring-1 ring-primary-800 sm:p-2.5">
+          {/* Full-width detail + CTAs — no orphaned left gutter */}
+          <div
+            className={premiumCard(
+              "overflow-hidden p-6 sm:p-8 lg:p-9",
+              "soft"
+            )}
+          >
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-primary-800 ring-1 ring-primary-200/50">
+                  <Bus className="h-4 w-4" />
+                </span>
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary-900">
+                  Groups we serve
+                </p>
+              </div>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-5">
+                {GROUP_TYPES.map((item) => (
+                  <li
+                    key={item}
+                    className={premiumCard(
+                      "flex items-start gap-3 p-4 sm:p-5",
+                      "light"
+                    )}
+                  >
+                    <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent-50 text-primary-800 ring-1 ring-primary-200/45">
+                      <Bus className="h-4 w-4" strokeWidth={2} />
+                    </span>
+                    <p className="text-sm font-semibold leading-snug text-primary-950/75">
+                      {item}
+                    </p>
+                    <div className={premiumCardAccentBar} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-8 flex flex-col gap-3 border-t border-primary-200/40 pt-8 sm:flex-row sm:items-center sm:justify-center sm:gap-4 lg:mt-10 lg:pt-10">
+              <Link
+                href={homeSections.whyGoCoach}
+                className="group inline-flex h-12 w-full items-center justify-center gap-2.5 rounded-full bg-primary-800 px-8 text-sm font-bold text-white shadow-[0_12px_32px_rgba(53,0,20,0.18)] transition-all hover:bg-primary-900 hover:shadow-[0_16px_40px_rgba(53,0,20,0.22)] sm:w-auto sm:min-w-[220px]"
+              >
+                Learn more about us
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-transform group-hover:translate-x-0.5">
+                  <ArrowUpRight className="h-4 w-4" />
+                </span>
+              </Link>
+              <Link
+                href={homeSections.getStarted}
+                className="inline-flex h-12 w-full items-center justify-center rounded-full border border-primary-200/80 bg-white px-8 text-sm font-bold text-primary-900 transition-colors hover:border-primary-300 hover:bg-accent-50 sm:w-auto sm:min-w-[220px]"
+              >
+                Get a free quote
+              </Link>
+            </div>
+            <div className={premiumCardAccentBar} />
+          </div>
+
+          {/* —— Stats —— */}
+          <div className="overflow-hidden rounded-[28px] bg-primary-900 p-2.5 shadow-[0_20px_56px_rgba(53,0,20,0.22)] ring-1 ring-primary-800 sm:p-3">
             <div className="grid grid-cols-2 divide-y divide-white/10 lg:grid-cols-4 lg:divide-x lg:divide-y-0">
               {STATS.map(({ value, label, icon: Icon }, index) => (
                 <div
                   key={label}
                   className={cn(
-                    "group relative flex flex-col gap-2 px-4 py-5 sm:gap-3 sm:px-6 sm:py-7",
+                    "group relative flex flex-col gap-2 px-5 py-6 sm:gap-3 sm:px-6 sm:py-7",
                     index % 2 === 0 && "lg:border-none",
                     index < 2 && "border-b border-white/10 lg:border-b-0"
                   )}
@@ -260,8 +247,8 @@ export function CommitmentSection() {
             </div>
           </div>
 
-          {/* —— Row 3: pillars (equal thirds) —— */}
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {/* —— Pillars —— */}
+          <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {PILLARS.map(({ icon: Icon, title, description }, index) => (
               <article
                 key={title}
@@ -281,7 +268,7 @@ export function CommitmentSection() {
                 <h3 className="mt-5 text-base font-bold tracking-[-0.02em] text-primary-950 sm:text-lg">
                   {title}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-primary-950/55">
+                <p className="mt-3 text-sm leading-6 text-primary-950/55">
                   {description}
                 </p>
                 <div className={premiumCardAccentBar} />

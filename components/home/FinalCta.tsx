@@ -50,10 +50,10 @@ export function FinalCta() {
               Go Coach Charters
             </p>
 
-            <h3 className="mt-3 max-w-xl text-2xl font-bold leading-[1.05] tracking-[-0.045em] text-white sm:text-3xl lg:text-4xl xl:text-5xl">
-              Comfortable travel.
+            <h3 className="mt-3 max-w-xl text-2xl font-bold leading-[1.14] tracking-[-0.028em] text-white sm:text-3xl sm:leading-[1.12] lg:text-4xl xl:text-5xl">
+              Comfortable Travel.
               <SectionTitleAccent inverted>
-                Built around your group.
+                Built Around Your Group.
               </SectionTitleAccent>
             </h3>
           </div>
@@ -65,16 +65,16 @@ export function FinalCta() {
           <div className="relative z-10 w-full max-w-xl">
             <SectionHeading
               tone="inverted"
-              eyebrow="Ready to get started?"
+              eyebrow="Ready to Get Started?"
               title={
                 <>
-                  Let&apos;s get your
-                  <SectionTitleAccent inverted>journey moving.</SectionTitleAccent>
+                  Let&apos;s Get Your
+                  <SectionTitleAccent inverted>Journey Moving.</SectionTitleAccent>
                 </>
               }
               description="Start your quote today and our group travel team will help you find the right coach, schedule, and transportation solution for your group."
               className="max-w-none"
-              headingClassName="max-w-lg text-3xl sm:text-4xl lg:text-5xl"
+              headingClassName="max-w-lg text-3xl sm:text-4xl lg:text-5xl lg:leading-[1.1]"
             />
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

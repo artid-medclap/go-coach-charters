@@ -6,6 +6,7 @@ import {
   HeartHandshake,
   Map,
   Trophy,
+  Users,
 } from "lucide-react";
 
 import { Container } from "@/components/shared/Container";
@@ -17,10 +18,13 @@ import {
 import {
   premiumCard,
   premiumCardAccentBar,
+  premiumCardBody,
+  premiumCardDescription,
+  premiumCardTitle,
+  premiumImageHover,
   premiumImageOverlay,
+  premiumMediaAspect,
 } from "@/components/shared/premium-ui";
-import { cn } from "@/lib/utils";
-
 const GROUPS = [
   {
     icon: Briefcase,
@@ -52,19 +56,19 @@ const GROUPS = [
   },
   {
     icon: Map,
-    image: "/services/private-tours.webp",
+    image: "/services/private-tours (1).webp",
     title: "Private Tours",
     description:
       "Group transportation for sightseeing and multi-day trips.",
   },
+  {
+    icon: Users,
+    image: "/services/corporate-travel.webp",
+    title: "Family Outings",
+    description:
+      "Reunions, celebrations, and day trips with room for the whole group.",
+  },
 ];
-
-function serviceCardColumnClass(index: number) {
-  return cn(
-    "lg:col-span-2",
-    index === 3 && "lg:col-start-2"
-  );
-}
 
 export function ServicesSection() {
   return (
@@ -76,17 +80,17 @@ export function ServicesSection() {
         <SectionHeading
           align="center"
           wide
-          eyebrow="Who we serve"
+          eyebrow="Who We Serve"
           title={
             <>
               Transportation for
-              <SectionTitleAccent>every kind of group</SectionTitleAccent>
+              <SectionTitleAccent>Every Kind of Group</SectionTitleAccent>
             </>
           }
-          description="From business travel and school trips to weddings, sporting events, and private tours, we keep your group moving comfortably together."
+          description="From business travel and school trips to weddings, sporting events, private tours, and family outings, we keep your group moving comfortably together."
         />
 
-        <div className="mx-auto mt-10 grid max-w-7xl gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:mt-16 lg:grid-cols-6 lg:gap-6">
+        <div className="mx-auto mt-10 grid max-w-7xl items-stretch gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:mt-16 lg:grid-cols-6 lg:gap-6">
           {GROUPS.map((group, index) => {
             const Icon = group.icon;
             const number = String(index + 1).padStart(2, "0");
@@ -95,20 +99,17 @@ export function ServicesSection() {
               <article
                 key={group.title}
                 className={premiumCard(
-                  cn(
-                    "flex h-full min-h-0 flex-col sm:min-h-[400px]",
-                    serviceCardColumnClass(index)
-                  ),
+                  "flex h-full flex-col overflow-hidden p-0 lg:col-span-2",
                   "light"
                 )}
               >
-                <div className="relative aspect-[5/4] shrink-0 overflow-hidden sm:aspect-[4/3]">
+                <div className={premiumMediaAspect}>
                   <Image
                     src={group.image}
                     alt={group.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                    className={premiumImageHover}
                   />
                   <div className={premiumImageOverlay} />
 
@@ -121,7 +122,7 @@ export function ServicesSection() {
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <div className={premiumCardBody}>
                   <div className="flex items-center gap-3">
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent-50 text-primary-800 ring-1 ring-primary-200/45 transition-colors duration-300 group-hover:bg-primary-200 group-hover:text-primary-950">
                       <Icon className="h-5 w-5" strokeWidth={1.8} />
@@ -131,13 +132,9 @@ export function ServicesSection() {
                     </p>
                   </div>
 
-                  <h3 className="mt-4 text-lg font-bold tracking-[-0.02em] text-primary-950 sm:text-xl">
-                    {group.title}
-                  </h3>
+                  <h3 className={`mt-4 ${premiumCardTitle}`}>{group.title}</h3>
 
-                  <p className="mt-2 flex-1 text-sm leading-6 text-primary-950/55">
-                    {group.description}
-                  </p>
+                  <p className={premiumCardDescription}>{group.description}</p>
                 </div>
 
                 <div className={premiumCardAccentBar} />

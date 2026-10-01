@@ -4,8 +4,8 @@ import {
   CheckCircle2,
   Luggage,
   MapPinned,
+  ShieldCheck,
   UserCheck,
-  UsersRound,
 } from "lucide-react";
 
 import { Container } from "@/components/shared/Container";
@@ -17,7 +17,12 @@ import {
 import {
   premiumCard,
   premiumCardAccentBar,
+  premiumCardBody,
+  premiumCardDescription,
+  premiumCardTitle,
+  premiumImageHover,
   premiumImageOverlay,
+  premiumMediaAspect,
 } from "@/components/shared/premium-ui";
 
 const FEATURES = [
@@ -38,15 +43,8 @@ const FEATURES = [
   {
     icon: MapPinned,
     image: "/services/charters.webp",
-    title: "Built Around Your Itinerary",
+    title: "Flexible Trip Planning",
     description: "Transportation according to your itinerary.",
-  },
-  {
-    icon: UsersRound,
-    image: "/services/sports-teams.webp",
-    title: "Made for Group Logistics",
-    description:
-      "Keep your group together with a charter bus loaded with amenities.",
   },
   {
     icon: Luggage,
@@ -60,7 +58,14 @@ const FEATURES = [
     image: "/hero/commitment.webp",
     title: "One Coach, One Group",
     description:
-      "Everyone stays together without arranging multiple vehicles.",
+      "Several people remain together without arranging multiple vehicles.",
+  },
+  {
+    icon: ShieldCheck,
+    image: "/services/corporate-travel.webp",
+    title: "Licensed & Insured Fleet",
+    description:
+      "Fully licensed operators and insured coaches for dependable group travel.",
   },
 ];
 
@@ -76,7 +81,7 @@ export function WhyChooseCharter() {
           eyebrow="Why Go Coach"
           title={
             <>
-              Why groups choose
+              Why Groups Choose
               <SectionTitleAccent>Go Coach Charters</SectionTitleAccent>
             </>
           }
@@ -113,10 +118,10 @@ export function WhyChooseCharter() {
                   Group travel made simple
                 </p>
 
-                <h3 className="mt-4 max-w-sm text-2xl font-bold leading-[1.08] tracking-[-0.03em] text-white sm:text-3xl lg:text-4xl">
-                  One comfortable coach.
-                  <span className="block text-primary-200">
-                    One organized journey.
+                <h3 className="mt-4 max-w-sm text-2xl font-bold leading-[1.14] tracking-[-0.028em] text-white sm:text-3xl sm:leading-[1.12] lg:text-4xl">
+                  One Comfortable Coach.
+                  <span className="mt-2 block text-primary-200 sm:mt-2.5">
+                    One Organized Journey.
                   </span>
                 </h3>
 
@@ -181,30 +186,26 @@ export function WhyChooseCharter() {
                   "light"
                 )}
               >
-                <div className="relative aspect-[16/10] shrink-0 overflow-hidden">
+                <div className={premiumMediaAspect}>
                   <Image
                     src={image}
                     alt={title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                    className={premiumImageHover}
                   />
                   <div className={premiumImageOverlay} />
                   <span className="absolute left-4 top-4 text-[11px] font-bold tabular-nums text-white/90">
-                    0{index + 1}
+                    {String(index + 1).padStart(2, "0")}
                   </span>
                   <span className="absolute bottom-4 left-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 text-primary-800 shadow-lg ring-1 ring-white/50 transition-colors duration-300 group-hover:bg-primary-200">
                     <Icon className="h-5 w-5" strokeWidth={1.8} />
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col p-5 sm:p-6">
-                  <h3 className="text-base font-bold tracking-[-0.02em] text-primary-950 sm:text-lg">
-                    {title}
-                  </h3>
-                  <p className="mt-2 flex-1 text-sm leading-6 text-primary-950/55">
-                    {description}
-                  </p>
+                <div className={premiumCardBody}>
+                  <h3 className={premiumCardTitle}>{title}</h3>
+                  <p className={premiumCardDescription}>{description}</p>
                 </div>
 
                 <div className={premiumCardAccentBar} />
